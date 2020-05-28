@@ -1,0 +1,236 @@
+'.source.cpp':
+    'int64_t':
+        'prefix':'i6'
+        'body':'int64_t '
+    'input1':
+        'prefix':'in1'
+        'body':'int64_t n;\ncin >> n;'
+    'input2':
+        'prefix':'in2'
+        'body':'int64_t n, m;\ncin >> n >> m;'
+    'input3':
+        'prefix':'in3'
+        'body':'int64_t n, m, k;\ncin >> n >> m >> k;'
+    'input4':
+        'prefix':'in4'
+        'body':'int64_t a, b, c, d;\ncin >> a >> b >> c >> d;'
+    'input_string':
+        'prefix':'ins1'
+        'body':'string s;\ncin >> s;'
+    'input_array':
+        'prefix':'inarray'
+        'body':"""
+        int64_t a[n];
+        rep(i, n) {
+            cin >> a[i];
+        }
+        """
+    'input_array2':
+        'prefix':'inarray2'
+        'body':"""
+        int64_t a[n], b[n];
+        rep(i, n) {
+            cin >> a[i] >> b[i];
+        }
+        """
+    'input_2array':
+        'prefix':'in2array'
+        'body':"""
+        int64_t a[n][k];
+        rep(i, n) {
+            rep(j, k) {
+            cin >> a[i][j];
+            }
+        }
+        """
+    'output':
+        'prefix':'o'
+        'body':'cout << ans << endl;'
+    'output2':
+        'prefix':'o2'
+        'body':'cout << n << " " << m << endl;'
+    'output3':
+        'prefix':'o3'
+        'body':'cout << n << " " << m << " " << k << endl;'
+    'output_array':
+        'prefix':'oa'
+        'body':"""
+        rep(i, n) {
+            cout << a[i] << " ";
+        }
+        cout << endl;
+        """
+    'output_comment':
+        'prefix':'oc'
+        'body':'cout << "Yes" << endl;'
+    'output_comment_ans':
+        'prefix':'oca'
+        'body':'cout << "a " << ans << endl;'
+    'output?':
+        'prefix':'o?'
+        'body':'cout << ( ans ? "Yes" : "No" ) << endl;'
+    'ans_zero':
+        'prefix':'ans0'
+        'body':'int64_t ans = 0;'
+    'endl':
+        'prefix':'endl'
+        'body':'cout << endl;'
+    'nCr':
+        'prefix':'nCr'
+        'body':"""
+
+        int64_t nCr(int64_t n , int64_t r) {
+            if ( n == r || n == 1 || r == 0 ) {
+                return 1;
+            }
+
+            r = min(r, n-r);
+            if ( r == 1 ) {
+                return n;
+            } else {
+                std::vector<std::vector<int64_t> > v(n + 1,std::vector<int64_t>(n + 1, 0));
+                for (int64_t i = 0; i < v.size(); i++) {
+                    v[i][0] = 1;
+                    v[i][i] = 1;
+                }
+                for (int j = 1; j < v.size(); j++) {
+                    for (int64_t k = 1; k < j; k++) {
+                        v[j][k] = (v[j - 1][k - 1] + v[j - 1][k]);
+                    }
+                }
+                return v[n][r];
+            }
+        }
+
+        """
+    'nCr_mod':
+        'prefix':'nCr_mod'
+        'body':"""
+
+        const int64_t MOD = 1e9 + 7;
+
+        int64_t Mod(int64_t a, int64_t mod) {
+            return (a%mod + mod)%mod;
+        }
+
+        int64_t pow_mod(int64_t x, int64_t n, int64_t mod) {
+            int64_t res = 1;
+            while(n > 0) {
+                if (n & 1) {
+                    res = res*x%mod;
+                }
+                x = x*x%mod;
+                n >>= 1;
+            }
+            return res;
+        }
+
+        int64_t extGCD(int64_t a, int64_t b, int64_t &x, int64_t &y) {
+            if (b == 0) {
+                x = 1;
+                y = 0;
+                return a;
+            }
+            int64_t d = extGCD(b, a%b, y, x);
+            y -= a / b * x;
+            return d;
+        }
+
+        int64_t modinv(int64_t a, int64_t mod) {
+            int64_t x, y;
+            extGCD(a, mod, x, y);
+            return Mod(x, mod);
+        }
+
+        int64_t nCr_mod(int64_t n, int64_t r, int64_t mod) {
+            if ( n == r || n == 1 || r == 0 ) {
+                return 1;
+            }
+
+            r = min(r, n-r);
+            if ( r == 1 ) {
+                return n;
+            } else {
+                int64_t n_to_n_r = n;
+                int64_t r_to_1 = r;
+                rep2(i, r-1) {
+                    n_to_n_r *= n-i;
+                    n_to_n_r %= mod;
+                    r_to_1 *= r-i;
+                    r_to_1 %= mod;
+                }
+                // r_to_1 = pow_mod(r_to_1, mod-2, mod);
+                r_to_1 = modinv(r_to_1, MOD);
+                return n_to_n_r*r_to_1%mod;
+            }
+        }
+
+        """
+    'pairCompareFirst':
+        'prefix':'pcf'
+        'body':"""
+
+        bool pair_Cf(const pair<int64_t, int64_t>& firstElof, const pair<int64_t, int64_t>& secondElof) {
+            return firstElof.first < secondElof.first;
+        }
+
+        """
+    'pairCompareFirstRev':
+        'prefix':'pcfr'
+        'body':"""
+
+        bool pair_Cf_R(const pair<int64_t, int64_t>& firstElof, const pair<int64_t, int64_t>& secondElof) {
+            return firstElof.first > secondElof.first;
+        }
+
+        """
+    'pairCompareSecond':
+        'prefix':'pcs'
+        'body':"""
+
+        bool pair_Cs(const pair<string, int64_t>& firstElof, const pair<string, int64_t>& secondElof) {
+            return firstElof.second < secondElof.second;
+        }
+
+        """
+    'pairCompareSecondRev':
+        'prefix':'pcsr'
+        'body':"""
+
+        bool pair_Cs_R(const pair<string, int64_t>& firstElof, const pair<string, int64_t>& secondElof) {
+            return firstElof.second > secondElof.second;
+        }
+
+        """
+    'vector_pair':
+        'prefix':'vectorp'
+        'body':'vector<pair<int64_t, int64_t> > p;'
+    'sort_pair':
+        'prefix':'sortp'
+        'body':'sort(ALL(p), pair_Cs);'
+    'pair_push_back':
+        'prefix':'P'
+        'body':'Push_back(p, a, b);'
+    'bfs':
+        'prefix':'bfs'
+        'body':"""
+
+        void bfs ( Graph G ) {
+            std::vector<int64_t> seen(G.size(), 0);
+            queue<int64_t> q;
+            q.push(0);
+            while ( !q.empty() ) {
+                int64_t num = q.front();
+                seen[num] = 1;
+                q.pop();
+                rep(i, G[num].size()) {
+                    int64_t see = G[num].at(i);
+                    if ( seen[see] == 0 ) {
+                        q.push(see);
+                        seen[see] = 1;
+                    }
+                }
+            }
+        }
+
+        """
