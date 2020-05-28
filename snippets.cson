@@ -71,7 +71,7 @@
         'body':'cout << ( ans ? "Yes" : "No" ) << endl;'
     'ans_zero':
         'prefix':'ans0'
-        'body':'i6 ans = 0;'
+        'body':'int64_t ans = 0;'
     'endl':
         'prefix':'endl'
         'body':'cout << endl;'
