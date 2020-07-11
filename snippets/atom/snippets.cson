@@ -167,7 +167,7 @@
 
         """
     'pairCompareFirst':
-        'prefix':'pcf'
+        'prefix':'paircf'
         'body':"""
 
         bool pair_Cf(const pair<int64_t, int64_t>& firstElof, const pair<int64_t, int64_t>& secondElof) {
@@ -176,7 +176,7 @@
 
         """
     'pairCompareFirstRev':
-        'prefix':'pcfr'
+        'prefix':'paircfr'
         'body':"""
 
         bool pair_Cf_R(const pair<int64_t, int64_t>& firstElof, const pair<int64_t, int64_t>& secondElof) {
@@ -185,7 +185,7 @@
 
         """
     'pairCompareSecond':
-        'prefix':'pcs'
+        'prefix':'paircs'
         'body':"""
 
         bool pair_Cs(const pair<string, int64_t>& firstElof, const pair<string, int64_t>& secondElof) {
@@ -194,7 +194,7 @@
 
         """
     'pairCompareSecondRev':
-        'prefix':'pcsr'
+        'prefix':'paircsr'
         'body':"""
 
         bool pair_Cs_R(const pair<string, int64_t>& firstElof, const pair<string, int64_t>& secondElof) {
@@ -209,7 +209,7 @@
         'prefix':'sortp'
         'body':'sort(ALL(p), pair_Cs);'
     'pair_push_back':
-        'prefix':'P'
+        'prefix':'Pair'
         'body':'Push_back(p, a, b);'
     'bfs':
         'prefix':'bfs'
@@ -233,4 +233,18 @@
             }
         }
 
+        """
+    'Alphabet':
+        'prefix':'alpha'
+        'body':"""
+        void Alphabet (char s) {
+            if (s >= 'a' && s <= 'z') {
+                cout << "small" << endl;
+            } else if(s >= 'A' && s <= 'Z') {
+                cout << "large" << endl;
+            } else if(s >= '0') {
+                cout << "number" << endl;
+            }
+            return;
+        }
         """
