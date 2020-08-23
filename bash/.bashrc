@@ -182,8 +182,8 @@ function GitPushAtomSnippets () {
 	cd;
 	cp .atom/snippets.cson Hakidame/snippets/atom/;
 	cd Hakidame/;
-	git add snippets.cson;
-	git commit -a -m "$1";
+	git add --all;
+	git commit -a -m "atom snippets";
 	git push origin master;
 	cd;
 	cd ${path};
@@ -209,3 +209,19 @@ alias aaa=a
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/ogawatakafumi/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/ogawatakafumi/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ogawatakafumi/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/ogawatakafumi/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
