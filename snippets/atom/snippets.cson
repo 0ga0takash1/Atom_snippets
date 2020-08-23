@@ -252,6 +252,7 @@
     'Alphabet':
         'prefix':'alpha'
         'body':"""
+
         void Alphabet (char s) {
             if (s >= 'a' && s <= 'z') {
                 cout << "small" << endl;
@@ -262,4 +263,23 @@
             }
             return;
         }
+        
+        """
+    'Eratosthenes':
+        'prefix': 'era'
+        'body': """
+
+        std::vector<int64_t> Eratosthenes( int64_t n ) {
+            std::vector<int64_t> is_prime(n+1, 1);
+
+            std::vector<int64_t> P;
+            repb2(i, 2, n) {
+                if( is_prime[i] ) {
+                    for( int j = 2 * i; j <= n; j += i ) is_prime[j] = 0;
+                        P.push_back(i);
+                }
+            }
+            return P;
+        }
+
         """
