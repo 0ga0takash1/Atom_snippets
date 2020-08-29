@@ -218,7 +218,8 @@
         void bfs ( Graph G ) {
             std::vector<int64_t> seen(G.size(), 0);
             queue<int64_t> q;
-            q.push(0);
+            int64_t start_num = 0;
+            q.push(start_num);
             while ( !q.empty() ) {
                 int64_t num = q.front();
                 seen[num] = 1;
@@ -263,7 +264,7 @@
             }
             return;
         }
-        
+
         """
     'Eratosthenes':
         'prefix': 'era'
