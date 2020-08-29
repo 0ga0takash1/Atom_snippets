@@ -116,6 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export CXX='g++-9'
+export XX='gcc-9'
+
 alias vibash="vi ~/.bashrc"
 alias runbash="source ~/.bashrc"
 
@@ -189,6 +192,28 @@ function GitPushAtomSnippets () {
 	cd ${path};
 }
 alias atoms=GitPushAtomSnippets
+
+function GitPushBashrc () {
+	path=$PWD;
+	cd;
+	cp .bashrc Hakidame/bash/;
+	cd Hakidame/;
+	git add --all;
+	git commit -a -m "bashrc"
+	git push origin master;
+	cd;
+	cd ${path};
+}
+alias pushbash=GitPushBashrc
+
+function bootAtomAndChangeDirectory () {
+	cd;
+	atom $1;
+	cd $1;
+}
+alias ccd=bootAtomAndChangeDirectory
+
+
 
 function a () {
 	#echo $1
