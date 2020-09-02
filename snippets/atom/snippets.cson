@@ -208,9 +208,12 @@
     'sort_pair':
         'prefix':'sortp'
         'body':'sort(ALL(p), pair_Cs);'
+    'make_pair':
+        'prefix':'make'
+        'body':'mp(a, b)'
     'pair_push_back':
-        'prefix':'Pair'
-        'body':'Push_back(p, a, b);'
+        'prefix':'Push'
+        'body':'Push_back(a, b);'
     'bfs':
         'prefix':'bfs'
         'body':"""
