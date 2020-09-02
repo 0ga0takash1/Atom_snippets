@@ -206,14 +206,13 @@ function GitPushBashrc () {
 }
 alias pushbash=GitPushBashrc
 
-function bootAtomAndChangeDirectory () {
+function bootEditorAndChangeDirectory () {
 	cd;
-	atom $1;
+	editor='atom';
+	${editor} $1;
 	cd $1;
 }
-alias ccd=bootAtomAndChangeDirectory
-
-
+alias cdd=bootEditorAndChangeDirectory
 
 function a () {
 	#echo $1
