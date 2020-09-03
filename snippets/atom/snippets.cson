@@ -246,9 +246,9 @@
         void dfs(Graph G, int v) {
             seen[v] = true;
 
-            rep(i, G[v].size()) {
-                if (seen[G[v].at(i)]) continue;
-                dfs(G, G[v].at(i));
+            repe(i, G[v]) {
+                if (seen[i]) continue;
+                dfs(G, i);
             }
         }
 
@@ -285,5 +285,37 @@
             }
             return P;
         }
+
+        """
+    'UnionFind':
+        'prefix': 'UnionFind'
+        'body': """
+
+        struct UnionFind {
+            vector<int64_t> r;
+
+            UnionFind(int64_t N) {
+                r = vector<int64_t>(N, -1);
+            }
+
+            int64_t root(int64_t x) {
+                if (r[x] < 0) return x;
+                return r[x] = root(r[x]);
+            }
+
+            bool unite(int64_t x, int64_t y) {
+                x = root(x);
+                y = root(y);
+                if (x == y) return false;
+                if (r[x] > r[y]) swap(x, y);
+                r[x] += r[y];
+                r[y] = x;
+                return true;
+            }
+
+            int64_t size(int64_t x) {
+                return -r[root(x)];
+            }
+        };
 
         """
