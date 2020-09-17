@@ -6,8 +6,7 @@ alias runbash="source ~/.bashrc"
 
 ########## AtCoder ##########
 function accdir () {
-	cd;
-	cd AtCoder/;
+	cd ~/AtCoder/;
 	cp -a Contest/ $1;
 	atom $1;
 	cd $1;
@@ -89,8 +88,7 @@ alias vibash2=cp_bashrc
 
 function git_push_bashrc () {
 	path=$PWD;
-	cd;
-	cd Hakidame/;
+	cd ~/Hakidame/;
 	git add --all;
 	git commit -a -m "bashrc"
 	git push origin master;
@@ -113,16 +111,3 @@ function boot_edi_and_cd () {
 	cd $2;
 }
 alias edi=boot_edi_and_cd
-
-function a () {
-	#echo $1
-	#name=${basename:$1};
-	name=$1
-	echo $name
-	#name=${name:0:1}
-	cpp='.cpp'
-	name=${name}${cpp}
-	echo $name
-	#cd s/${name};
-}
-alias aaa=a
