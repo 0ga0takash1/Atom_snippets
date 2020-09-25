@@ -65,7 +65,6 @@ function acctest () {
 alias act=acctest
 
 function acctest2 () {
-	# act2 XX.cpp ABCXXX a
     path=$PWD;
     cpp='.cpp';
     name=$3${cpp};
