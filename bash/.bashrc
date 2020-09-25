@@ -65,6 +65,7 @@ function acctest () {
 alias act=acctest
 
 function acctest2 () {
+	# act2 XX.cpp ABCXXX a
     path=$PWD;
     cpp='.cpp';
     name=$3${cpp};
@@ -116,7 +117,7 @@ function bootEditorAndChangeDirectory () {
 	${editor} $1;
 	cd $1;
 }
-alias cdd=bootEditorAndChangeDirectory
+alias atom2=bootEditorAndChangeDirectory
 
 function boot_edi_and_cd () {
 	cd;
