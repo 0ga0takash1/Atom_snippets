@@ -63,6 +63,19 @@ function acctest () {
 	cd ${path};
 }
 alias act=acctest
+
+function acctest2 () {
+    path=$PWD;
+    cpp='.cpp';
+    name=$3${cpp};
+    cp $1 ~/AtCoder/$2/s/$3/${name};
+    cd ~/AtCoder/$2/s/$3;
+	g++ ${name};
+    oj t -d ./tests/;
+    cd;
+    cd ${path};
+}
+alias act2=acctest2
 ########## AtCoder ##########
 
 function GitPushAtomSnippets () {
