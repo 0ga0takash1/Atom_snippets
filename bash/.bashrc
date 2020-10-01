@@ -65,18 +65,30 @@ function acctest () {
 alias act=acctest
 
 function acctest2 () {
-    path=$PWD;
-    cpp='.cpp';
-    name=$3${cpp};
-    cp $1 ~/AtCoder/$2/s/$3/${name};
-    cd ~/AtCoder/$2/s/$3;
-	g++ ${name};
-    oj t -d ./tests/;
-    cd;
-    cd ${path};
+	if [ $1 = "t" ]; then
+		commandline='act2 XX.cpp ABCXXX a';
+		echo ${commandline};
+	else
+  		path=$PWD;
+   		cpp='.cpp';
+   		name=$3${cpp};
+   		cp $1 ~/AtCoder/$2/s/$3/${name};
+   		cd ~/AtCoder/$2/s/$3;
+		g++ ${name};
+    	oj t -d ./tests/;
+    	cd;
+    	cd ${path};
+	fi
 }
 alias act2=acctest2
 ########## AtCoder ##########
+
+function git_add_commit_push () {
+	git add --all;
+	git commit -a -m "$1";
+	git push origin master;
+}
+alias git_push=git_add_commit_push
 
 function GitPushAtomSnippets () {
 	path=$PWD;
@@ -110,13 +122,17 @@ function git_push_bashrc () {
 }
 alias pushbash=git_push_bashrc
 
-function bootEditorAndChangeDirectory () {
-	cd;
-	editor='atom';
-	${editor} $1;
-	cd $1;
+function atom_cd () {
+	if [ $1 = "t" ]; then
+		commandline='atom2 XX/XX/ XX.txt';
+		echo ${commandline};
+	else
+		cd;
+		cd $1;
+		atom $2;
+	fi
 }
-alias atom2=bootEditorAndChangeDirectory
+alias atom2=atom_cd
 
 function boot_edi_and_cd () {
 	cd;
