@@ -57,7 +57,7 @@ function acctest () {
 	name=$1${cpp};
 	cp ${name} s/$1/;
 	cd s/$1;
-	g++ ${name};
+	g++-9 ${name};
 	oj t -d ./tests/;
 	cd;
 	cd ${path};
@@ -74,7 +74,7 @@ function acctest2 () {
    		name=$3${cpp};
    		cp $1 ~/AtCoder/$2/s/$3/${name};
    		cd ~/AtCoder/$2/s/$3;
-		g++ ${name};
+		g++-9 ${name};
     	oj t -d ./tests/;
     	cd;
     	cd ${path};
@@ -88,7 +88,6 @@ function git_add_commit_push () {
 	git commit -a -m "$1";
 	git push origin master;
 }
-alias git_push=git_add_commit_push
 
 function GitPushAtomSnippets () {
 	path=$PWD;
