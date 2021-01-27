@@ -39,7 +39,7 @@
         std::vector<std::vector<int64_t>> a(n, std::vector<int64_t>(k));
         rep(i, n) {
             rep(j, k) {
-            cin >> a[i][j];
+                cin >> a[i][j];
             }
         }
         """
@@ -100,6 +100,32 @@
                 }
                 return v[n][r];
             }
+        }
+
+        """
+    'Mod':
+        'prefix': 'Mod'
+        'body': """
+
+        int64_t Mod(int64_t a, int64_t mod) {
+            return (a%mod + mod)%mod;
+        }
+
+        """
+    'pow_mod':
+        'prefix': 'pow_mod'
+        'body': """
+
+        int64_t pow_mod(int64_t x, int64_t n, int64_t mod) {
+            int64_t res = 1;
+            while(n > 0) {
+                if (n & 1) {
+                    res = res*x%mod;
+                }
+                x = x*x%mod;
+                n >>= 1;
+            }
+            return res;
         }
 
         """
@@ -264,6 +290,29 @@
                 cout << "number" << endl;
             }
             return;
+        }
+
+        """
+    'div_num':
+        'prefix': 'div_num'
+        'body': """
+
+        int64_t div_num (int64_t n) {
+            vector<int64_t> x(n+1);
+    	    int64_t num = n;
+            int64_t ans = 1;
+
+            repb2(i, 2, n) {
+                while (num%i == 0) {
+                    x.at(i)++;
+                    num /= i;
+                }
+            }
+
+            repb2(i, 2, n) {
+                ans *= x.at(i)+1;
+            }
+            return ans;
         }
 
         """
