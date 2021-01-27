@@ -102,6 +102,18 @@ function GitPushAtomSnippets () {
 }
 alias atoms=GitPushAtomSnippets
 
+function gitpush_codesnippets () {
+    path=$PWD;
+    cd;
+    cp ~/.config/Code/User/snippets/cpp.json Hakidame/snippets/code/;
+    cd Hakidame/;
+    git add --all;
+    git commit -a -m "code snippets";
+    git push origin master;
+    cd;
+    cd ${path};
+}
+
 function cp_bashrc () {
 	cd;
 	cp .bashrc Hakidame/bash/;
