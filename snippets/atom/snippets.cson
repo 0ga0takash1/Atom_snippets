@@ -72,6 +72,9 @@
     'ans_zero':
         'prefix':'ans0'
         'body':'int64_t ans = 0;'
+    'vector2':
+        'prefix': 'vec2'
+        'body': 'std::vector<std::vector<int64_t>> a(n, std::vector<int64_t>(k));'
     'endl':
         'prefix':'endl'
         'body':'cout << endl;'
