@@ -89,7 +89,7 @@ function git_add_commit_push () {
 	git push origin master;
 }
 
-function GitPushAtomSnippets () {
+function gitpush_atomsnippets () {
 	path=$PWD;
 	cd;
 	cp .atom/snippets.cson Hakidame/snippets/atom/;
@@ -100,7 +100,7 @@ function GitPushAtomSnippets () {
 	cd;
 	cd ${path};
 }
-alias atoms=GitPushAtomSnippets
+alias atoms=gitpush_atomsnippets
 
 function gitpush_codesnippets () {
     path=$PWD;
