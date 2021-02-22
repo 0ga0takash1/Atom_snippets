@@ -132,6 +132,60 @@
         }
 
         """
+    'truncate':
+        'prefix': 'truncate'
+        'body': """
+
+        int64_t truncate (int64_t n, int64_t d) {
+            int64_t ten = pow(10, d);
+            if ( n%ten ) n/=ten;n*=ten;
+            return n;
+        }
+
+        """
+    'rounding':
+        'prefix': 'rounding'
+        'body': """
+
+        int64_t rounding(int64_t n, int64_t d) {
+            int64_t ten = pow(10, d);
+            if ( n%ten ) {
+                n += 5*pow(10, d-1);
+                n/=ten;n*=ten;
+            }
+            return n;
+        }
+
+        """
+    'round_up':
+        'prefix': 'roundup'
+        'body': """
+
+        int64_t round_up(int64_t n, int64_t d) {
+            int64_t ten = pow(10, d);
+            if ( n%ten ) {
+                n += pow(10, d);
+                n/=ten;n*=ten;
+            }
+            return n;
+        }
+
+        """
+    'ABC_n':
+        'prefix': 'ABC_n'
+        'body': """
+
+        int64_t ABC_n (int64_t n) {
+            int64_t ans = 0;
+            rep2(a, n) {
+                for (int64_t b = 1; a*b <= n; ++b) {
+                    ans += n/a/b;
+                }
+            }
+            return ans;
+        }
+
+        """
     'nCr_mod':
         'prefix':'nCr_mod'
         'body':"""
@@ -437,5 +491,28 @@
                     cout << endl;
                 }
         };
+
+        """
+    'bit_search':
+        'prefix': 'bit'
+        'body': """
+
+        int64_t bit_search (int64_t n, int64_t k, int64_t c[], int64_t d[]) {
+            int64_t k2 = 1 << k;
+            rep(s, k2) {
+                std::vector<int64_t> dish(n+1, 0);
+                rep(i, k) {
+                    if ( s>>i & 1 ) {
+                        ++dish[d[i]];
+                    } else {
+                        ++dish[c[i]];
+                    }
+                }
+
+                // 以下
+
+            }
+            return 0;
+        }
 
         """
