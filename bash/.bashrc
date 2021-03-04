@@ -21,26 +21,6 @@ alias acn=accnew
 
 function accsubmit () {
 	path=$PWD;
-	cp $2 s/$1/;
-	cd s/$1;
-	acc submit $2;
-	cd;
-	cd ${path};
-}
-
-function accsubmit2 () {
-	path=$PWD;
-	name=$1;
-	name=${name:0:1};
-	cp $1 s/${name}/;
-	cd s/${name};
-	acc submit $1;
-	cd;
-	cd ${path};
-}
-
-function accsubmit3 () {
-	path=$PWD;
 	cpp='.cpp';
 	name=$1${cpp};
 	cp ${name} s/$1/;
@@ -49,7 +29,26 @@ function accsubmit3 () {
 	cd;
 	cd ${path};
 }
-alias acs=accsubmit3
+alias acs=accsubmit
+
+function accsubmit2 () {
+	if [ $1 = "t" ]; then
+        commandline='acs2 XX.cpp ABCXXX a';
+        echo ${commandline};
+    else
+    	path=$PWD;
+    	cpp='.cpp';
+    	name=$3${cpp};
+		cd;
+		cd AtCoder/;
+    	cp practice/$1 $2/s/$3/${name};
+    	cd $2/s/$3;
+    	acc submit ${name};
+    	cd;
+    	cd ${path};
+	fi
+}
+alias acs2=accsubmit2
 
 function acctest () {
 	path=$PWD;
