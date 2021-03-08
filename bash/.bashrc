@@ -100,6 +100,7 @@ function acc_cp () {
         name=$1${2^^}"_"$3${cpp};
 		cd ~/AtCoder/;
 		cp $1/$2${cpp} practice/${name};
+		cd practice/;
 	fi
 }
 ########## AtCoder ##########
