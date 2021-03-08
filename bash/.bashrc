@@ -80,6 +80,28 @@ function acctest2 () {
 	fi
 }
 alias act2=acctest2
+
+function cp_a_use () {
+	path=$PWD;
+	cd ~/AtCoder/;
+	cp Contest/a.cpp practice/;
+	cp Contest/useful_func.cpp practice/;
+	cd;
+	cd ${path};
+}
+
+function acc_cp () {
+	if [ $1 = "t" ]; then
+        commandline='accp ABCXXX a XXX_XXX';
+        echo ${commandline};
+    else
+		path=$PWD;
+        cpp='.cpp';
+        name=$1${2^^}"_"$3${cpp};
+		cd ~/AtCoder/;
+		cp $1/$2${cpp} practice/${name};
+	fi
+}
 ########## AtCoder ##########
 
 function git_add_commit_push () {
