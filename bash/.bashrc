@@ -81,7 +81,7 @@ function acctest2 () {
 }
 alias act2=acctest2
 
-function cp_a_use () {
+function acc_cp_a_use () {
 	path=$PWD;
 	cd ~/AtCoder/;
 	cp Contest/a.cpp practice/;
@@ -89,10 +89,11 @@ function cp_a_use () {
 	cd;
 	cd ${path};
 }
+alias acau=acc_cp_a_use
 
 function acc_cp () {
 	if [ $1 = "t" ]; then
-        commandline='accp ABCXXX a XXX_XXX';
+        commandline='acp ABCXXX a XXX_XXX';
         echo ${commandline};
     else
 		path=$PWD;
@@ -103,6 +104,26 @@ function acc_cp () {
 		cd practice/;
 	fi
 }
+alias acp=acc_cp
+
+function acc_mv () {
+	if [ $1 = "t" ]; then
+        commandline='acm ABCXXX a XXX_XXX 1';
+        echo ${commandline};
+    else
+        path=$PWD;
+        cpp='.cpp';
+		name=$1${2^^}"_"$3;
+		if [ $4 = '0' ]; then
+        	mv $3 ${name}
+			mv $3${cpp} ${name}${cpp}
+		else
+			mv $3 soloved/${name}
+            mv $3${cpp} soloved/${name}${cpp}
+		fi
+    fi
+}
+alias acmv=acc_mv
 ########## AtCoder ##########
 
 function git_add_commit_push () {
