@@ -2,6 +2,7 @@ export CXX='g++-9'
 export XX='gcc-9'
 
 alias vibash="vi ~/.bashrc"
+alias codebash="code ~/.bashrc"
 alias runbash="source ~/.bashrc"
 
 ########## AtCoder ##########
@@ -108,20 +109,59 @@ alias acp=acc_cp
 
 function acc_mv () {
 	if [ $1 = "t" ]; then
-        commandline='acm ABCXXX a XXX_XXX 1';
+        commandline='acmv ABCXXX a XXX_XXX';
+        echo ${commandline};
+		commandline='acmv ABCXXXA_XXX_XXX';
         echo ${commandline};
     else
-        path=$PWD;
-        cpp='.cpp';
-		name=$1${2^^}"_"$3;
-		if [ $4 = '0' ]; then
-        	mv $3 ${name}
-			mv $3${cpp} ${name}${cpp}
+		# check wheather rename
+		read -p "need rename? (y/N): " rename
+		case "${rename}" in 
+			[yY]*) rename=1;;
+				*) rename=0;;
+		esac
+		# check soloved
+		read -p "soloved? (y/N): " soloved
+		case "${soloved}" in 
+			[yY]*) soloved=1;;
+				*) soloved=0;;
+		esac
+		# prog
+    	path=$PWD;
+    	cpp='.cpp';
+		if [ ${rename} -eq 1 ]; then
+			#read -p "Contest name: " contest
+			#read -p "what problem?: " prob
+			#read -p "problem's name: " prob_name
+			#name=${contest}${prob^^}"_"${prob_name};
+			#if [ ${soloved} = 0 ]; then
+        		#mv ${prob_name} ${name}
+				#mv ${prob_name}${cpp} ${name}${cpp}
+			#else
+				#mv ${prob_name} soloved/${name}
+        	   	#mv ${prob_name}${cpp} soloved/${name}${cpp}
+			#fi
+			name=$1${2^^}"_"$3;
+			if [ ${soloved} -eq 0 ]; then
+        		mv $3 ${name}
+				mv $3${cpp} ${name}${cpp}
+			else
+				mv $3 soloved/${name}
+            	mv $3${cpp} soloved/${name}${cpp}
+			fi
 		else
-			mv $3 soloved/${name}
-            mv $3${cpp} soloved/${name}${cpp}
+			#read -p "file name: " prob_name
+			#if [ ${soloved} = 0 ]; then
+        		#mv ${prob_name} ${name}
+				#mv ${prob_name}${cpp} ${name}${cpp}
+			#else
+				#mv ${prob_name} soloved/${name}
+           		#mv ${prob_name}${cpp} soloved/${name}${cpp}
+			#fi
+			mv $1 soloved/
+            mv $1${cpp} soloved/
 		fi
-    fi
+	fi
 }
 alias acmv=acc_mv
 ########## AtCoder ##########
