@@ -93,7 +93,6 @@ function acc_cp () {
         commandline='acp ABCXXX a XXX_XXX';
         echo ${commandline};
     else
-		path=$PWD;
         cpp='.cpp';
         name=$1${2^^}"_"$3${cpp};
 		cd ~/AtCoder/;
@@ -110,33 +109,34 @@ function acc_mv () {
 		commandline='acmv ABCXXXA_XXX_XXX';
         echo ${commandline};
     else
-		# check wheather rename
-		read -p "need rename? (y/N): " rename
-		case "${rename}" in 
-			[yY]*) rename=1;;
-				*) rename=0;;
-		esac
-		# check soloved
-		read -p "soloved? (y/N): " soloved
-		case "${soloved}" in 
-			[yY]*) soloved=1;;
-				*) soloved=0;;
-		esac
-		# prog
-    	path=$PWD;
-    	cpp='.cpp';
-		if [ ${rename} -eq 1 ]; then
-			name=$1${2^^}"_"$3;
-			if [ ${soloved} -eq 0 ]; then
-        		mv $3 ${name}
-				mv $3${cpp} ${name}${cpp}
-			else
-				mv $3 soloved/${name}
-            	mv $3${cpp} soloved/${name}${cpp}
-			fi
-		else
-			mv $1 soloved/
+		if [ -z $2 ]; then
+  			mv $1 soloved/
             mv $1${cpp} soloved/
+		else
+			# check wheather rename
+			read -p "need rename? (y/N): " rename
+			case "${rename}" in 
+				[yY]*) rename=1;;
+					*) rename=0;;
+			esac
+			# check soloved
+			read -p "soloved? (y/N): " soloved
+			case "${soloved}" in 
+				[yY]*) soloved=1;;
+					*) soloved=0;;
+			esac
+			# prog
+    		cpp='.cpp';
+			if [ ${rename} -eq 1 ]; then
+				name=$1${2^^}"_"$3;
+				if [ ${soloved} -eq 0 ]; then
+        			mv $3 ${name}
+					mv $3${cpp} ${name}${cpp}
+				else
+					mv $3 soloved/${name}
+            		mv $3${cpp} soloved/${name}${cpp}
+				fi			
+			fi
 		fi
 	fi
 }
