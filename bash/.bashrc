@@ -113,12 +113,6 @@ function acc_mv () {
   			mv $1 soloved/
             mv $1${cpp} soloved/
 		else
-			# check wheather rename
-			read -p "need rename? (y/N): " rename
-			case "${rename}" in 
-				[yY]*) rename=1;;
-					*) rename=0;;
-			esac
 			# check soloved
 			read -p "soloved? (y/N): " soloved
 			case "${soloved}" in 
@@ -127,16 +121,14 @@ function acc_mv () {
 			esac
 			# prog
     		cpp='.cpp';
-			if [ ${rename} -eq 1 ]; then
-				name=$1${2^^}"_"$3;
-				if [ ${soloved} -eq 0 ]; then
-        			mv $3 ${name}
-					mv $3${cpp} ${name}${cpp}
-				else
-					mv $3 soloved/${name}
-            		mv $3${cpp} soloved/${name}${cpp}
-				fi			
-			fi
+			name=$1${2^^}"_"$3;
+			if [ ${soloved} -eq 0 ]; then
+        		mv $3 ${name}
+				mv $3${cpp} ${name}${cpp}
+			else
+				mv $3 soloved/${name}
+            	mv $3${cpp} soloved/${name}${cpp}
+			fi			
 		fi
 	fi
 }
