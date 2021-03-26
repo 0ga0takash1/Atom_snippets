@@ -1,10 +1,6 @@
 export CXX='g++-9'
 export XX='gcc-9'
 
-alias vibash="vi ~/.bashrc"
-alias codebash="code ~/.bashrc"
-alias runbash="source ~/.bashrc"
-
 ########## AtCoder ##########
 function accdir () {
 	cd ~/AtCoder/;
@@ -130,17 +126,6 @@ function acc_mv () {
     	path=$PWD;
     	cpp='.cpp';
 		if [ ${rename} -eq 1 ]; then
-			#read -p "Contest name: " contest
-			#read -p "what problem?: " prob
-			#read -p "problem's name: " prob_name
-			#name=${contest}${prob^^}"_"${prob_name};
-			#if [ ${soloved} = 0 ]; then
-        		#mv ${prob_name} ${name}
-				#mv ${prob_name}${cpp} ${name}${cpp}
-			#else
-				#mv ${prob_name} soloved/${name}
-        	   	#mv ${prob_name}${cpp} soloved/${name}${cpp}
-			#fi
 			name=$1${2^^}"_"$3;
 			if [ ${soloved} -eq 0 ]; then
         		mv $3 ${name}
@@ -150,14 +135,6 @@ function acc_mv () {
             	mv $3${cpp} soloved/${name}${cpp}
 			fi
 		else
-			#read -p "file name: " prob_name
-			#if [ ${soloved} = 0 ]; then
-        		#mv ${prob_name} ${name}
-				#mv ${prob_name}${cpp} ${name}${cpp}
-			#else
-				#mv ${prob_name} soloved/${name}
-           		#mv ${prob_name}${cpp} soloved/${name}${cpp}
-			#fi
 			mv $1 soloved/
             mv $1${cpp} soloved/
 		fi
@@ -197,13 +174,17 @@ function gitpush_codesnippets () {
     cd ${path};
 }
 
+alias vibash="vi ~/.bashrc"
+alias codebash="code ~/.bashrc"
+alias runbash="source ~/.bashrc"
+
 function cp_bashrc () {
 	cd;
 	cp .bashrc Hakidame/bash/;
 	cd Hakidame/bash;
 	code .bashrc;
 }
-alias vibash2=cp_bashrc
+alias codebash2=cp_bashrc
 
 function git_push_bashrc () {
 	path=$PWD;
