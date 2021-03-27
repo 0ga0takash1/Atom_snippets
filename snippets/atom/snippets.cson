@@ -497,22 +497,19 @@
         'prefix': 'bit'
         'body': """
 
-        int64_t bit_search (int64_t n, int64_t k, int64_t c[], int64_t d[]) {
-            int64_t k2 = 1 << k;
-            rep(s, k2) {
-                std::vector<int64_t> dish(n+1, 0);
-                rep(i, k) {
-                    if ( s>>i & 1 ) {
-                        ++dish[d[i]];
-                    } else {
-                        ++dish[c[i]];
-                    }
+        rep(s, (1<<n)) {
+            // 皿用意
+            std::vector<int64_t> dish(n, 0);
+            rep(i, n) {
+                if ( s>>i & 1 ) {
+                    ++dish[i];
+                } else {
+
                 }
-
-                // 以下
-
             }
-            return 0;
+
+            // 以下
+
         }
 
         """
