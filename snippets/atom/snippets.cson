@@ -2,18 +2,6 @@
     'int64_t':
         'prefix':'i6'
         'body':'int64_t '
-    'input1':
-        'prefix':'in1'
-        'body':'int64_t n;\ncin >> n;'
-    'input2':
-        'prefix':'in2'
-        'body':'int64_t n, m;\ncin >> n >> m;'
-    'input3':
-        'prefix':'in3'
-        'body':'int64_t n, m, k;\ncin >> n >> m >> k;'
-    'input4':
-        'prefix':'in4'
-        'body':'int64_t a, b, c, d;\ncin >> a >> b >> c >> d;'
     'input_string':
         'prefix':'ins1'
         'body':'string s;\ncin >> s;'
@@ -552,4 +540,17 @@
             return true;
         }
 
+        """
+    'rotate point':
+        'prefix': 'rotate'
+        'body': """
+
+        pair<long double, long double> rotate ( long double x, long double y,
+                                            long double ox, long double oy,
+                                            long double theta) {
+            x -= ox;
+            y -= oy;
+            return {x*cos(theta)-y*sin(theta)+ox, y*cos(theta)+x*sin(theta)+oy};
+        }
+        
         """
