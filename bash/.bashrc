@@ -4,9 +4,9 @@ export XX='gcc-9'
 ########## AtCoder ##########
 function accdir () {
 	cd ~/AtCoder/;
-	cp -a Contest/ $1;
-	atom $1;
-	cd $1;
+	cp -a Contest/ ${1^^};
+	atom ${1^^};
+	cd ${1^^};
 }
 alias acd=accdir
 
@@ -30,7 +30,7 @@ alias acs=accsubmit
 
 function accsubmit2 () {
 	if [ $1 = "t" ]; then
-        commandline='acs2 XX.cpp ABCXXX a';
+        commandline='acs2 XX.cpp abcXXX a';
         echo ${commandline};
     else
     	path=$PWD;
@@ -38,8 +38,8 @@ function accsubmit2 () {
     	name=$3${cpp};
 		cd;
 		cd AtCoder/;
-    	cp practice/$1 $2/s/$3/${name};
-    	cd $2/s/$3;
+    	cp practice/$1 ${2^^}/s/$3/${name};
+    	cd ${2^^}/s/$3;
     	acc submit ${name};
     	cd;
     	cd ${path};
@@ -62,14 +62,14 @@ alias act=acctest
 
 function acctest2 () {
 	if [ $1 = "t" ]; then
-		commandline='act2 XX.cpp ABCXXX a';
+		commandline='act2 XX.cpp abcXXX a';
 		echo ${commandline};
 	else
   		path=$PWD;
    		cpp='.cpp';
    		name=$3${cpp};
-   		cp $1 ~/AtCoder/$2/s/$3/${name};
-   		cd ~/AtCoder/$2/s/$3;
+   		cp $1 ~/AtCoder/${2^^}/s/$3/${name};
+   		cd ~/AtCoder/${2^^}/s/$3;
 		g++-9 ${name};
     	oj t -d ./tests/;
     	cd;
@@ -90,13 +90,13 @@ alias acau=acc_cp_a_use
 
 function acc_cp () {
 	if [ $1 = "t" ]; then
-        commandline='acp ABCXXX a XXX_XXX';
+        commandline='acp abcXXX a XXX_XXX';
         echo ${commandline};
     else
         cpp='.cpp';
-        name=$1${2^^}"_"$3${cpp};
+        name=${1^^}${2^^}"_"$3${cpp};
 		cd ~/AtCoder/;
-		cp $1/$2${cpp} practice/${name};
+		cp ${1^^}/$2${cpp} practice/${name};
 		cd practice/;
 	fi
 }
@@ -104,9 +104,9 @@ alias acp=acc_cp
 
 function acc_mv () {
 	if [ $1 = "t" ]; then
-        commandline='acmv ABCXXX a XXX_XXX';
+        commandline='rename: acmv abcXXX a XXX_XXX';
         echo ${commandline};
-		commandline='acmv ABCXXXA_XXX_XXX';
+		commandline='remove: acmv ABCXXXA_XXX_XXX';
         echo ${commandline};
     else
 		if [ -z $2 ]; then
@@ -121,7 +121,7 @@ function acc_mv () {
 			esac
 			# prog
     		cpp='.cpp';
-			name=$1${2^^}"_"$3;
+			name=${1^^}${2^^}"_"$3;
 			if [ ${soloved} -eq 0 ]; then
         		mv $3 ${name}
 				mv $3${cpp} ${name}${cpp}
