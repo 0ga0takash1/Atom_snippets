@@ -282,15 +282,6 @@
     'vector_pair':
         'prefix':'vectorp'
         'body':'vector<pair<int64_t, int64_t> > p;'
-    'sort_pair':
-        'prefix':'sortp'
-        'body':'sort(ALL(p), pair_Cs);'
-    'make_pair':
-        'prefix':'make'
-        'body':'mp(a, b)'
-    'pair_push_back':
-        'prefix':'Push'
-        'body':'Push_back(a, b);'
     'bfs':
         'prefix':'bfs'
         'body':"""
@@ -319,15 +310,19 @@
         'prefix':'dfs'
         'body':"""
 
-        vector<int64_t> seen(INF, 0);
-        void dfs(Graph G, int v) {
+        vector<int64_t> seen;
+        Graph G;
+        void dfs(int v) {
             seen[v] = true;
 
-            repe(i, G[v]) {
+            repi(i, G[v]) {
                 if (seen[i]) continue;
-                dfs(G, i);
+                dfs(i);
             }
         }
+
+        // G.reserve(n);
+        // seen = vector<int64_t>(n, 0);
 
         """
     'Alphabet':
