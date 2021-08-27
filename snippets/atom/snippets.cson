@@ -240,38 +240,20 @@
         }
 
         """
-    'pairCompareFirst':
-        'prefix':'paircf'
-        'body':"""
-
-        bool pair_Cf(const pair<int64_t, int64_t>& firstElof, const pair<int64_t, int64_t>& secondElof) {
-            return firstElof.first < secondElof.first;
-        }
-
-        """
-    'pairCompareFirstRev':
-        'prefix':'paircfr'
-        'body':"""
-
-        bool pair_Cf_R(const pair<int64_t, int64_t>& firstElof, const pair<int64_t, int64_t>& secondElof) {
-            return firstElof.first > secondElof.first;
-        }
-
-        """
     'pairCompareSecond':
         'prefix':'paircs'
         'body':"""
 
-        bool pair_Cs(const pair<string, int64_t>& firstElof, const pair<string, int64_t>& secondElof) {
+        bool pcs(const pair<string, int64_t>& firstElof, const pair<string, int64_t>& secondElof) {
             return firstElof.second < secondElof.second;
         }
 
         """
     'pairCompareSecondRev':
-        'prefix':'paircsr'
+        'prefix':'paircsrev'
         'body':"""
 
-        bool pair_Cs_R(const pair<string, int64_t>& firstElof, const pair<string, int64_t>& secondElof) {
+        bool pcs_r(const pair<string, int64_t>& firstElof, const pair<string, int64_t>& secondElof) {
             return firstElof.second > secondElof.second;
         }
 
