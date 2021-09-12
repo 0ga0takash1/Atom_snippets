@@ -11,8 +11,9 @@ function accdir () {
 alias acd=accdir
 
 function accnew () {
-	acc new $1;
-	mv $1 s;
+	c=${PWD##*/}
+	acc new ${c};
+	mv ${c} s;
 }
 alias acn=accnew
 
@@ -23,7 +24,6 @@ function accsubmit () {
 	cp ${name} s/$1/;
 	cd s/$1;
 	acc submit ${name};
-	cd;
 	cd ${path};
 }
 alias acs=accsubmit
@@ -41,7 +41,6 @@ function accsubmit2 () {
     	cp practice/$1 ${2^^}/s/$3/${name};
     	cd ${2^^}/s/$3;
     	acc submit ${name};
-    	cd;
     	cd ${path};
 	fi
 }
@@ -55,7 +54,6 @@ function acctest () {
 	cd s/$1;
 	g++-9 ${name};
 	oj t -d ./tests/;
-	cd;
 	cd ${path};
 }
 alias act=acctest
@@ -72,7 +70,6 @@ function acctest2 () {
    		cd ~/AtCoder/${2^^}/s/$3;
 		g++-9 ${name};
     	oj t -d ./tests/;
-    	cd;
     	cd ${path};
 	fi
 }
@@ -83,20 +80,20 @@ function acc_cp_a_use () {
 	cd ~/AtCoder/;
 	cp Contest/a.cpp practice/;
 	cp Contest/useful_func.cpp practice/;
-	cd;
 	cd ${path};
 }
 alias acau=acc_cp_a_use
 
 function acc_cp () {
 	if [ $1 = "t" ]; then
-        commandline='acp abcXXX a XXX_XXX';
+        commandline='acp a XXX_XXX';
         echo ${commandline};
     else
         cpp='.cpp';
-        name=${1^^}${2^^}"_"$3${cpp};
+		c=${PWD##*/}
+        name=${c}${1^^}"_"$2${cpp};
 		cd ~/AtCoder/;
-		cp ${1^^}/$2${cpp} practice/${name};
+		cp ${c}/$1${cpp} practice/${name};
 		cd practice/;
 	fi
 }
@@ -149,7 +146,6 @@ function gitpush_atomsnippets () {
 	git add --all;
 	git commit -a -m "atom snippets";
 	git push origin master;
-	cd;
 	cd ${path};
 }
 alias atoms=gitpush_atomsnippets
@@ -162,7 +158,6 @@ function gitpush_codesnippets () {
     git add --all;
     git commit -a -m "code snippets";
     git push origin master;
-    cd;
     cd ${path};
 }
 
@@ -184,7 +179,6 @@ function git_push_bashrc () {
 	git add --all;
 	git commit -a -m "bashrc"
 	git push origin master;
-	cd;
 	cd ${path};
 }
 alias pushbash=git_push_bashrc
@@ -202,7 +196,6 @@ function atom_cd () {
 alias atom2=atom_cd
 
 function boot_edi_and_cd () {
-	cd;
 	$1 $2;
 	cd $2;
 }
