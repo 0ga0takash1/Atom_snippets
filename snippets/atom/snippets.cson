@@ -244,8 +244,13 @@
         'prefix':'paircs'
         'body':"""
 
-        bool pcs(const pair<string, int64_t>& firstElof, const pair<string, int64_t>& secondElof) {
-            return firstElof.second < secondElof.second;
+        bool my_c(pair<int64_t, int64_t> a, pair<int64_t, int64_t> b) {
+            // まずsecond
+            if ( a.second != b.second ) return a.second < b.second;
+
+            // secondが同じときはfirst
+            if ( a.first != b.first ) return a.first < b.first;
+            else return true;
         }
 
         """
@@ -253,8 +258,13 @@
         'prefix':'paircsrev'
         'body':"""
 
-        bool pcs_r(const pair<string, int64_t>& firstElof, const pair<string, int64_t>& secondElof) {
-            return firstElof.second > secondElof.second;
+        bool my_c(pair<int64_t, int64_t> a, pair<int64_t, int64_t> b) {
+            // まずsecond
+            if ( a.second != b.second ) return a.second > b.second;
+
+            // secondが同じときはfirst
+            if ( a.first != b.first ) return a.first < b.first;
+            else return true;
         }
 
         """
